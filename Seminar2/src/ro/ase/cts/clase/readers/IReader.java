@@ -6,6 +6,7 @@ import java.util.List;
 import ro.ase.cts.clase.Aplicant;
 
 public abstract class IReader {
+	//interfata initial, am schimbat-o mai tarziu in clasa abstracta
 	protected String filePath;
 	
 	public IReader(String filePath) {
