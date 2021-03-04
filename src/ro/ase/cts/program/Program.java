@@ -3,7 +3,6 @@ package ro.ase.cts.program;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import ro.ase.cts.clase.Angajat;
 import ro.ase.cts.clase.Aplicant;
 import ro.ase.cts.clase.readers.AngajatiReader;
 import ro.ase.cts.clase.readers.IReader;
