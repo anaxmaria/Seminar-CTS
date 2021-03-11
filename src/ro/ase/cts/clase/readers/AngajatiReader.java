@@ -9,33 +9,31 @@ import java.util.Scanner;
 import ro.ase.cts.clase.Angajat;
 import ro.ase.cts.clase.Aplicant;
 
-public class AngajatiReader extends IReader{
+public class AngajatiReader extends IReader {
 
-	public AngajatiReader(String filePath) {
-		super(filePath);
-		// TODO Auto-generated constructor stub
-	}
+    public AngajatiReader(String filePath) {
+        super(filePath);
+    }
 
-	public List<Aplicant> readAplicants() throws FileNotFoundException {
-		Scanner input2 = new Scanner(new File(super.filePath));
-		input2.useDelimiter(",");
-		List<Aplicant> angajati = new ArrayList<Aplicant>();
+    public List<Aplicant> readAplicants() throws FileNotFoundException {
+        Scanner input = new Scanner(new File(super.filePath));
+        input.useDelimiter(",");
+        List<Aplicant> listaAngajati = new ArrayList<Aplicant>();
 
-		while (input2.hasNext()) {
-			String nume = input2.next();
-			String prenume = input2.next();
-			int varsta = input2.nextInt();
-			int punctaj = input2.nextInt();
-			int nr = input2.nextInt();
-			String[] vect = new String[5];
-			for (int i = 0; i < nr; i++)
-				vect[i] = input2.next();
-			int salariu = input2.nextInt();
-			String ocupatie = input2.next();
-			Angajat a = new Angajat(nume, prenume, varsta, punctaj, nr, vect, salariu, ocupatie);
-			angajati.add(a);
-		}
-		input2.close();
-		return angajati;
-	}
+        while (input.hasNext()) {
+            Angajat angajat = new Angajat();
+            super.citireAplicant(input, angajat);
+
+            int salariu = input.nextInt();
+            angajat.setSalariu(salariu);
+
+            String ocupatie = input.next();
+            angajat.setOcupatie(ocupatie);
+
+            listaAngajati.add(angajat);
+        }
+
+        input.close();
+        return listaAngajati;
+    }
 }
