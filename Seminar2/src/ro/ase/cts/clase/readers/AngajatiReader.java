@@ -9,35 +9,31 @@ import java.util.Scanner;
 import ro.ase.cts.clase.Angajat;
 import ro.ase.cts.clase.Aplicant;
 
-
 public class AngajatiReader extends IReader {
-
 
 	public AngajatiReader(String filePath) {
 		super(filePath);
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<Aplicant> readAplicants() throws FileNotFoundException {
-		Scanner input2 = new Scanner(new File(super.filePath));
-		input2.useDelimiter(",");
-		List<Aplicant> angajati = new ArrayList<Aplicant>();
+		Scanner input = new Scanner(new File(super.filePath));
+		input.useDelimiter(",");
+		List<Aplicant> listaAngajati = new ArrayList<Aplicant>();
 
-		while (input2.hasNext()) {
-
+		while (input.hasNext()) {
 			Angajat angajat = new Angajat();
-			super.citireAplicant(input2, angajat);
-			
-			int salariu = input2.nextInt();
-			angajat.setSalariu(salariu);
-			
-			String ocupatie = input2.next();
-			angajat.setOcupatie(ocupatie);
-			
-			angajati.add(angajat);
+			super.citireAplicant(input, angajat);
 
+			int salariu = input.nextInt();
+			angajat.setSalariu(salariu);
+
+			String ocupatie = input.next();
+			angajat.setOcupatie(ocupatie);
+
+			listaAngajati.add(angajat);
 		}
-		input2.close();
-		return angajati;
+
+		input.close();
+		return listaAngajati;
 	}
 }

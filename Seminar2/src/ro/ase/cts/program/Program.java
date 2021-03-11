@@ -17,7 +17,6 @@ public class Program {
 
 	public static List<Aplicant> citesteAplicanti(IReader readAplicant)
 			throws NumberFormatException, FileNotFoundException {
-		// e functie -> static, altfel era metoda
 		return readAplicant.readAplicants();
 	}
 
@@ -26,21 +25,21 @@ public class Program {
 		System.out.println("Suma finantata pentru angajati " + Angajat.getSumaFinantare());
 		System.out.println("Suma finantata pentru studenti " + Student.getSumaFinantare());
 		System.out.println("Suma finantata pentru elevi " + Elev.getSumaFinantare());
+
 		List<Aplicant> listaAplicanti;
 
 		try {
 			listaAplicanti = citesteAplicanti(new AngajatiReader("angajati.txt"));
 			Proiect proiect = new Proiect(81);
+
 			for (Aplicant aplicant : listaAplicanti) {
 				System.out.println(aplicant.toString());
 				System.out.println(aplicant.getSumaFinantata());
-				
+
 				aplicant.afisareRaspunsProiect(proiect);
 			}
 		} catch (FileNotFoundException e) {
-
 			e.printStackTrace();
 		}
 	}
-
 }
